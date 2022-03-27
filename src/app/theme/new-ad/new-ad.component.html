@@ -1,0 +1,133 @@
+<div class="container">
+    <div class="">
+        <div class="">
+            <span>New Ad</span>
+        </div>
+        <form #form="ngForm" (ngSubmit)="createAd(form)">
+            <!-- <div class="new-ad-title">
+                <label for="adName">Title <span class="red">*</span></label>
+                <input type="text" name="adName" id="adName" ngModel required minlength="5">
+                <p class="error">
+                    Theme name is required.
+                </p>
+                <p class="error">
+                    Theme name must be at least 5 characters long.
+                </p>
+            </div>
+            <div class="new-ad-content">
+                <label for="postText">Post <span class="red">*</span></label>
+                <textarea type="text" name="postText" id="postText" rows="8" class="height" ngModel requred
+                    minlength="10"></textarea>
+                <p class="error">
+                    The field with your post is required.
+                </p>
+                <p class="error">
+                    Post must be at least 10 characters long.
+                </p>
+            </div> -->
+            <div>
+                <label for="brand">Brand</label>
+                <select name="brand" class="w145 selectHeight24" style="font-size:12px;" ngModel onchange="">
+                    <option value="">всички
+                    </option>
+                    <option value="AC">AC
+                    </option>
+                    <option value="Abarth">Abarth
+                    </option>
+                    <option value="Acura">Acura
+                    </option>
+                    <option value="Aixam">Aixam
+                    </option>
+                    <option value="Alfa Romeo">Alfa Romeo
+                    </option>
+                </select>
+            </div>
+
+            <div>
+                <label for="model">Model</label>
+                <select name="model" class="" style="font-size:12px;" ngModel required>
+                    <option value="">всички
+                    </option>
+                    <option value="AC">AC
+                    </option>
+                    <option value="Abarth">Abarth
+                    </option>
+                </select>
+            </div>
+            
+            <div>
+                <label for="manifactureDate">Manifacture Date</label>
+                <input name="manifactureDate" id="manifactureDate" type="date" ngModel required>
+            </div>
+            
+            <div>
+                <label for="engineType">Engyne Type</label>
+                <select name="engineType" id="engineType" ngModel required>
+                    <option value="diesel">diesel</option>
+                    <option value="petrol">petrol</option>
+                    <option value="hibrid">hibrid</option>
+                    <option value="electric">electric</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="transmission">Transmision</label>
+                <select name="transmission" id="transmission" ngModel required>
+                    <option value="manual">manual</option>
+                    <option value="automatic">automatic</option>
+                    <option value="semiautomatic">semiautomatic</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="category">Category</label>
+                <select name="category" id="category" ngModel required>
+                    <option value="van">van</option>
+                    <option value="jeep">jeep</option>
+                    <option value="sedan">sedan</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="mileage">Мileage</label>
+                <input type="text" name="mileage" id="mileage" maxlength="4" ngModel required >
+            </div>
+
+            <div>
+                <label for="color">Color</label>
+                <select name="color" id="color" ngModel required>
+                    <option value="white">white</option>
+                    <option value="red">red</option>
+                    <option value="black">black</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="price">Price: </label>
+                <input type="text" name="price" id="price" maxlength="6" ngModel required>
+            </div>
+
+            <div>
+                <label for="currency">Currency: </label>
+                <select name="currency" id="currency" ngModel required>
+                    <option value="BGN">BGN</option>
+                    <option value="EUR">EUR</option>
+                    <option value="USD">USD</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="moreInfo">MORE INFO: </label>
+                <textarea type="text" name="moreInfo" id="moreInfo" rows="8" class="moreInfo" ngModel requred
+                    minlength="10" maxlength="300"></textarea>
+            </div>
+
+
+            <div class="new-theme-buttons">
+                <button class="cancel" type="button" routerLink="/themes">Cancel</button>
+                <button class="public">Post</button>
+            </div>
+
+        </form>
+    </div>
+</div>

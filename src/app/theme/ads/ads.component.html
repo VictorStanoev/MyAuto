@@ -1,0 +1,87 @@
+<div class="container">
+
+    <main>
+        <div class="" *ngIf="ads">
+            <div *ngFor="let ad of ads" class="theme-container">
+                <div class="" [routerLink]="ad._id">
+
+
+                    <tbody>
+                        <tr>
+                            <td style="width:220px;height:10px;"></td>
+                            <td style="width:162px;height:10px;"></td>
+                            <td style="width:135px;height:10px;"></td>
+                            <td style="width:37px;height:10px;"></td>
+                            <td style="width:106px;height:10px;"></td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2" style="width:220px;height:150px">
+                                <table class="tablereset" style="width:212px">
+                                    <tbody>
+                                        <tr>
+                                            <td class="algcent valgmid"><a class="photoLink"><img
+                                                        src="//mobistatic4.focus.bg/mobile/photosmob/844/1/11637259178078844_nS.jpg"
+                                                        style="object-fit: cover;" width="200" height="150"
+                                                        class="noborder"
+                                                        alt="Обява за продажба на VW Touran 2.0.DSG.... ~27 000 лв."
+                                                        data-geo=""></a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                            <td class="valgtop" style="width:162px;height:40px;padding-left:4px">
+                                <div>{{ad.model}} {{ad.brand}}</div>
+                            </td>
+                            <td class="algright valgtop" style="width:135px;height:40px;padding-left:4px">
+                                <div><span class="price">{{ad.price}} {{ad.currency}}.</span></div>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td colspan="4" style="width:440px;height:50px;padding-left:4px">
+                                manifacture date. - {{ad.manifactureDate | date:'MMMM y'}} г., mileage - {{ad.mileage}}
+                                km, color - {{ad.color}}, {{ad.moreInfo | slice: 0:60}}<br>Особености - 4(5) Врати, Auto
+                                Start Stop function, Bluetoo...<br>Region:
+                                София, гр. София
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="5" style="height:10px;"></td>
+                        </tr>
+                    </tbody>
+                    <!-- <div class="">
+                        <a class="">
+                            <h2>{{ad.model}} {{ad.brand}}</h2>
+                        </a>
+                        <div class="columns">
+                            <div>
+                                <div>EngineType: {{ad.engineType}}</div>
+                                <div>Transmission: {{ad.transmission}}</div>
+                                <div>Catergory: {{ad.category}}</div>
+                                <div>Mileage: {{ad.mileage}}</div>
+                                <div>Color: {{ad.color}}</div>
+                                <div>Manifacture Date: {{ad.manifactureDate | date:'MMM y' }}</div>
+
+                                <div>CreatedAd: <time>{{ad.created_at}}</time></div>
+                                <div class="nick-name">
+                                    <p>Username: <span>{{ad.userId.username}}</span></p>
+                                </div>
+                            </div>
+                            <div class="subscribers">
+                                <button *ngIf="isLogged" class="subscribe">Subscribe</button>
+                                <p>Subscribers: <span>{{theme.subscribers.length}}</span></p>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+        <div *ngIf="!ads">Loading...</div>
+
+
+
+    </main>
+
+
+</div>

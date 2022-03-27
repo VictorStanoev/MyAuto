@@ -1,29 +1,44 @@
 <header>
   <div class="mini-navbar-wrap">
     <div class="logo-wrap">
-      <p class="logo"><span class="logo">SoftUni Forum</span></p>
+      <p class="logo"><span class="logo" routerLink="/">My Auto</span></p>
     </div>
     <div class="mini-navbar">
-      <ul>
+      <ul *ngIf="isLogged">
         <li>
-          <a href="#">Login</a>
+          <a routerLink="/profile">{{firstName}}'s profile</a>
         </li>
         <li>
-          <a href="#">Register</a>
+          <a (click)="logout()">Logout</a>
         </li>
       </ul>
+      <ul *ngIf="!isLogged">
+        <li>
+          <a routerLink="/login">Login</a>
+        </li>
+        <li>
+          <a routerLink="/register">Register</a>
+        </li>
+      </ul>
+
     </div>
   </div>
   <nav>
     <ul>
       <li>
-        <a href="#">Home</a>
+        <a routerLink="/home">Home</a>
       </li>
       <li>
-        <a href="#">Themes</a>
+        <a routerLink="/themes">Themes</a>
       </li>
       <li>
-        <a href="#">New Theme</a>
+        <a routerLink="/add-theme">New Theme</a>
+      </li>
+      <li>
+        <a routerLink="/ads">Ads</a>
+      </li>
+      <li>
+        <a routerLink="/add-ad">New Ad</a>
       </li>
     </ul>
   </nav>
