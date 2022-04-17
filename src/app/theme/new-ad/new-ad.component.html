@@ -1,133 +1,361 @@
-<div class="container">
+<div class="container mt-3">
+
     <div class="">
-        <div class="">
-            <span>New Ad</span>
-        </div>
-        <form #form="ngForm" (ngSubmit)="createAd(form)">
-            <!-- <div class="new-ad-title">
-                <label for="adName">Title <span class="red">*</span></label>
-                <input type="text" name="adName" id="adName" ngModel required minlength="5">
-                <p class="error">
-                    Theme name is required.
-                </p>
-                <p class="error">
-                    Theme name must be at least 5 characters long.
-                </p>
-            </div>
-            <div class="new-ad-content">
-                <label for="postText">Post <span class="red">*</span></label>
-                <textarea type="text" name="postText" id="postText" rows="8" class="height" ngModel requred
-                    minlength="10"></textarea>
-                <p class="error">
-                    The field with your post is required.
-                </p>
-                <p class="error">
-                    Post must be at least 10 characters long.
-                </p>
-            </div> -->
-            <div>
+        <h3>New auto Ad</h3>
+    </div>
+
+    <form #form="ngForm" (ngSubmit)="createAd(form)">
+        <div class="row">
+            <div class="col-md-3">
                 <label for="brand">Brand</label>
-                <select name="brand" class="w145 selectHeight24" style="font-size:12px;" ngModel onchange="">
-                    <option value="">всички
-                    </option>
-                    <option value="AC">AC
-                    </option>
-                    <option value="Abarth">Abarth
-                    </option>
-                    <option value="Acura">Acura
-                    </option>
-                    <option value="Aixam">Aixam
-                    </option>
-                    <option value="Alfa Romeo">Alfa Romeo
-                    </option>
+                <select name="brand" id="brand" class="form-control form-control-sm" ngModel
+                    (ngModelChange)="onSearchChange($event)">
+                    <option value="AC">AC</option>
+                    <option value="Abarth">Abarth</option>
+                    <option value="Acura">Acura</option>
+                    <option value="Aixam">Aixam</option>
+                    <option value="Alfa Romeo">Alfa Romeo</option>
+                    <option value="Alpina">Alpina</option>
+                    <option value="Aro">Aro</option>
+                    <option value="Asia">Asia</option>
+                    <option value="Aston martin">Aston martin</option>
+                    <option value="Audi">Audi</option>
+                    <option value="Austin">Austin</option>
+                    <option value="BMW">BMW</option>
+                    <option value="Bentley">Bentley</option>
+                    <option value="Berliner">Berliner</option>
+                    <option value="Bertone">Bertone</option>
+                    <option value="Borgward">Borgward</option>
+                    <option value="Brilliance">Brilliance</option>
+                    <option value="Bugatti">Bugatti</option>
+                    <option value="Buick">Buick</option>
+                    <option value="Cadillac">Cadillac</option>
+                    <option value="Carbodies">Carbodies</option>
+                    <option value="Chevrolet">Chevrolet</option>
+                    <option value="Chrysler">Chrysler</option>
+                    <option value="Citroen">Citroen</option>
+                    <option value="Corvette">Corvette</option>
+                    <option value="Cupra">Cupra</option>
+                    <option value="DS">DS</option>
+                    <option value="Dacia">Dacia</option>
+                    <option value="Daewoo">Daewoo</option>
+                    <option value="Daihatsu">Daihatsu</option>
+                    <option value="Daimler">Daimler</option>
+                    <option value="Datsun">Datsun</option>
+                    <option value="Dkw">Dkw</option>
+                    <option value="Dodge">Dodge</option>
+                    <option value="Dr">Dr</option>
+                    <option value="Eagle">Eagle</option>
+                    <option value="FSO">FSO</option>
+                    <option value="Ferrari">Ferrari</option>
+                    <option value="Fiat">Fiat</option>
+                    <option value="Ford">Ford</option>
+                    <option value="GOUPIL">GOUPIL</option>
+                    <option value="Gaz">Gaz</option>
+                    <option value="Genesis">Genesis</option>
+                    <option value="Geo">Geo</option>
+                    <option value="Gmc">Gmc</option>
+                    <option value="Gonow">Gonow</option>
+                    <option value="Great Wall">Great Wall</option>
+                    <option value="Haval">Haval</option>
+                    <option value="Heinkel">Heinkel</option>
+                    <option value="Hillman">Hillman</option>
+                    <option value="Honda">Honda</option>
+                    <option value="Hummer">Hummer</option>
+                    <option value="Hyundai">Hyundai</option>
+                    <option value="Ifa">Ifa</option>
+                    <option value="Infiniti">Infiniti</option>
+                    <option value="Innocenti">Innocenti</option>
+                    <option value="Isuzu">Isuzu</option>
+                    <option value="Iveco">Iveco</option>
+                    <option value="JAS">JAS</option>
+                    <option value="Jaguar">Jaguar</option>
+                    <option value="Jeep">Jeep</option>
+                    <option value="Jpx">Jpx</option>
+                    <option value="Kia">Kia</option>
+                    <option value="Lada">Lada</option>
+                    <option value="Laforza">Laforza</option>
+                    <option value="Lamborghini">Lamborghini</option>
+                    <option value="Lancia">Lancia</option>
+                    <option value="Land Rover">Land Rover</option>
+                    <option value="Landwind">Landwind</option>
+                    <option value="Lexus">Lexus</option>
+                    <option value="Lifan">Lifan</option>
+                    <option value="Lincoln">Lincoln</option>
+                    <option value="Lotus">Lotus</option>
+                    <option value="MG">MG</option>
+                    <option value="Mahindra">Mahindra</option>
+                    <option value="Maserati">Maserati</option>
+                    <option value="Matra">Matra</option>
+                    <option value="Maybach">Maybach</option>
+                    <option value="Mazda">Mazda</option>
+                    <option value="McLaren">McLaren</option>
+                    <option value="Mercedes-Benz">Mercedes-Benz</option>
+                    <option value="Mercury">Mercury</option>
+                    <option value="Microcar">Microcar</option>
+                    <option value="Mini">Mini</option>
+                    <option value="Mitsubishi">Mitsubishi</option>
+                    <option value="Morgan">Morgan</option>
+                    <option value="Moskvich">Moskvich</option>
+                    <option value="Nissan">Nissan</option>
+                    <option value="Oldsmobile">Oldsmobile</option>
+                    <option value="Opel">Opel</option>
+                    <option value="Perodua">Perodua</option>
+                    <option value="Peugeot">Peugeot</option>
+                    <option value="Pgo">Pgo</option>
+                    <option value="Plymouth">Plymouth</option>
+                    <option value="Polestar">Polestar</option>
+                    <option value="Polonez">Polonez</option>
+                    <option value="Pontiac">Pontiac</option>
+                    <option value="Porsche">Porsche</option>
+                    <option value="Proton">Proton</option>
+                    <option value="Qoros">Qoros</option>
+                    <option value="Renault">Renault</option>
+                    <option value="Rieju">Rieju</option>
+                    <option value="Rolls-Royce">Rolls-Royce</option>
+                    <option value="Rover">Rover</option>
+                    <option value="SECMA">SECMA</option>
+                    <option value="SH auto">SH auto</option>
+                    <option value="Saab">Saab</option>
+                    <option value="Samand">Samand</option>
+                    <option value="Santana">Santana</option>
+                    <option value="Saturn">Saturn</option>
+                    <option value="Scion">Scion</option>
+                    <option value="Seat">Seat</option>
+                    <option value="Shatenet">Shatenet</option>
+                    <option value="Shuanghuan">Shuanghuan</option>
+                    <option value="Simca">Simca</option>
+                    <option value="Skoda">Skoda</option>
+                    <option value="Smart">Smart</option>
+                    <option value="Ssang yong">Ssang yong</option>
+                    <option value="SsangYong">SsangYong</option>
+                    <option value="Subaru">Subaru</option>
+                    <option value="Suzuki">Suzuki</option>
+                    <option value="Talbot">Talbot</option>
+                    <option value="Tata">Tata</option>
+                    <option value="Tavria">Tavria</option>
+                    <option value="Tazzari">Tazzari</option>
+                    <option value="Tempo">Tempo</option>
+                    <option value="Terberg">Terberg</option>
+                    <option value="Tesla">Tesla</option>
+                    <option value="Tofas">Tofas</option>
+                    <option value="Toyota">Toyota</option>
+                    <option value="Trabant">Trabant</option>
+                    <option value="Triumph">Triumph</option>
+                    <option value="Uaz">Uaz</option>
+                    <option value="VROMOS">VROMOS</option>
+                    <option value="VW">VW</option>
+                    <option value="Volga">Volga</option>
+                    <option value="Volvo">Volvo</option>
+                    <option value="Warszawa">Warszawa</option>
+                    <option value="Wartburg">Wartburg</option>
+                    <option value="Wiesmann">Wiesmann</option>
+                    <option value="Xinkai">Xinkai</option>
+                    <option value="Xinshun">Xinshun</option>
+                    <option value="Yogomo">Yogomo</option>
+                    <option value="Zastava">Zastava</option>
+                    <option value="Zaz">Zaz</option>
+                    <option value="Други">Други</option>
+                    <option value="Победа">Победа</option>
+                    <option value="София">София</option>
+                    <option value="Чайка">Чайка</option>
                 </select>
+            </div>
+            <div class="col-md-3">
+                <label for="model">Model</label>
+                <select name="model" id="model" class="form-control form-control-sm" ngModel required>
+                    <option *ngFor="let car of cars" value="{{car}}">{{car}}</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+                <label for="manifactureDate">Manifacture Date</label>
+                <input name="manifactureDate" id="manifactureDate" class="form-control form-control-sm" type="date"
+                    ngModel required>
             </div>
 
-            <div>
-                <label for="model">Model</label>
-                <select name="model" class="" style="font-size:12px;" ngModel required>
-                    <option value="">всички
-                    </option>
-                    <option value="AC">AC
-                    </option>
-                    <option value="Abarth">Abarth
-                    </option>
-                </select>
-            </div>
-            
-            <div>
-                <label for="manifactureDate">Manifacture Date</label>
-                <input name="manifactureDate" id="manifactureDate" type="date" ngModel required>
-            </div>
-            
-            <div>
+            <div class="col-md-3">
                 <label for="engineType">Engyne Type</label>
-                <select name="engineType" id="engineType" ngModel required>
+                <select name="engineType" id="engineType" class="form-control form-control-sm" ngModel required>
                     <option value="diesel">diesel</option>
                     <option value="petrol">petrol</option>
                     <option value="hibrid">hibrid</option>
                     <option value="electric">electric</option>
                 </select>
             </div>
+        </div>
 
-            <div>
+        <div class="row">
+            <div class="col-md-3">
                 <label for="transmission">Transmision</label>
-                <select name="transmission" id="transmission" ngModel required>
+                <select name="transmission" id="transmission" class="form-control form-control-sm" ngModel required>
                     <option value="manual">manual</option>
                     <option value="automatic">automatic</option>
                     <option value="semiautomatic">semiautomatic</option>
                 </select>
             </div>
 
-            <div>
+            <div class="col-md-3">
                 <label for="category">Category</label>
-                <select name="category" id="category" ngModel required>
+                <select name="category" id="category" class="form-control form-control-sm" ngModel required>
                     <option value="van">van</option>
                     <option value="jeep">jeep</option>
                     <option value="sedan">sedan</option>
+                    <option value="cabrio">cabrio</option>
+                    <option value="conbi">combi</option>
+                    <option value="limo">limo</option>
+                    <option value="hatchback">hatchback</option>
                 </select>
             </div>
+        </div>
 
-            <div>
+        <div class="row">
+            <div class="col-md-3">
                 <label for="mileage">Мileage</label>
-                <input type="text" name="mileage" id="mileage" maxlength="4" ngModel required >
+                <input type="text" name="mileage" autocomplete="off" class="form-control form-control-sm" id="mileage"
+                    maxlength="4" ngModel required>
             </div>
 
-            <div>
+            <div class="col-md-3">
                 <label for="color">Color</label>
-                <select name="color" id="color" ngModel required>
-                    <option value="white">white</option>
-                    <option value="red">red</option>
-                    <option value="black">black</option>
+                <select name="color" id="color" class="form-control form-control-sm" ngModel required>
+                    <option value="Dark blue">Dark blue</option>
+                    <option value="Banana">Banana</option>
+                    <option value="Beata">Beata</option>
+                    <option value="Beige">Beige</option>
+                    <option value="Bordeaux">Bordeaux</option>
+                    <option value="Bronze">Bronze</option>
+                    <option value="White">White</option>
+                    <option value="Guilty">Guilty</option>
+                    <option value="Violets">Violets</option>
+                    <option value="Vishnev">Vishnev</option>
+                    <option value="Graphite">Graphite</option>
+                    <option value="Yellow">Yellow</option>
+                    <option value="Green">Green</option>
+                    <option value="Golden">Golden</option>
+                    <option value="Brown">Brown</option>
+                    <option value="Tiled">Tiled</option>
+                    <option value="Creamy">Creamy</option>
+                    <option value="Purple">Purple</option>
+                    <option value="Metallic">Metallic</option>
+                    <option value="Orange">Orange</option>
+                    <option value="Ocher">Ocher</option>
+                    <option value="Cinderella">Cinderella</option>
+                    <option value="Pearl">Pearl</option>
+                    <option value="Sandy">Sandy</option>
+                    <option value="Residual">Residual</option>
+                    <option value="Pink">Pink</option>
+                    <option value="Sahara">Sahara</option>
+                    <option value="Light Grey">Light Grey</option>
+                    <option value="Light blue">Light blue</option>
+                    <option value="Gray">Gray</option>
+                    <option value="Son">Son</option>
+                    <option value="Ivory">Ivory</option>
+                    <option value="Silver">Silver</option>
+                    <option value="T.green">T.green</option>
+                    <option value="Dark gray">Dark gray</option>
+                    <option value="Dark blue meth.">Dark blue meth.</option>
+                    <option value="Dark red">Dark red</option>
+                    <option value="Tobacco">Tobacco</option>
+                    <option value="Chameleon">Chameleon</option>
+                    <option value="Red">Red</option>
+                    <option value="Black">Black</option>
+
                 </select>
             </div>
+        </div>
 
-            <div>
-                <label for="price">Price: </label>
-                <input type="text" name="price" id="price" maxlength="6" ngModel required>
+        <div class="row">
+            <div class="col-md-3">
+                <label for="price">Price</label>
+                <input type="text" name="price" autocomplete="off" id="price" class="form-control form-control-sm"
+                    maxlength="6" ngModel required>
             </div>
 
-            <div>
-                <label for="currency">Currency: </label>
-                <select name="currency" id="currency" ngModel required>
-                    <option value="BGN">BGN</option>
+            <div class="col-md-3">
+                <label for="currency">Currency</label>
+                <select name="currency" id="currency" class="form-control form-control-sm" ngModel required>
+                    <option value="лв.">BGN</option>
                     <option value="EUR">EUR</option>
                     <option value="USD">USD</option>
                 </select>
             </div>
+        </div>
 
-            <div>
-                <label for="moreInfo">MORE INFO: </label>
-                <textarea type="text" name="moreInfo" id="moreInfo" rows="8" class="moreInfo" ngModel requred
-                    minlength="10" maxlength="300"></textarea>
-            </div>
+        <div class="col-md-6 mb-3">
+            <label for="moreInfo">AD INFORMATION: </label>
+            <textarea type="text" name="moreInfo" id="moreInfo" class="form-control form-control-sm" rows="4" ngModel
+                requred minlength="10" maxlength="300"></textarea>
+        </div>
 
 
-            <div class="new-theme-buttons">
-                <button class="cancel" type="button" routerLink="/themes">Cancel</button>
-                <button class="public">Post</button>
-            </div>
+        <div class="col-md-6 my-3">
+            <label for="formFileMultiple" class="form-label">Add picture 1</label>
+            <input class="form-control" type="file"  id="0" name="picture1"  (change)="onFileSelected($event)">
+        </div>
+        <div *ngIf="imageAsBinary[0] != undefined || ''" >
+            <img src="{{imageAsBinary[0]}}" alt="Car Image" width="200" height="150">
+        </div>
 
-        </form>
-    </div>
+
+        <div class="col-md-6 my-3">
+            <label for="formFileMultiple" class="form-label">Add picture 2</label>
+            <input class="form-control" type="file"  id="1" name="picture2"  (change)="onFileSelected($event)">
+        </div>
+        <div *ngIf="imageAsBinary[1] != undefined || '' " >
+            <img src="{{imageAsBinary[1]}}" alt="Car Image"width="200" height="150">
+        </div>
+        
+        
+        <div class="col-md-6 my-3">
+            <label for="formFileMultiple" class="form-label">Add picture 3</label>
+            <input class="form-control" type="file"  id="2" name="picture2"  (change)="onFileSelected($event)">
+        </div>
+        <div *ngIf="imageAsBinary[2] != undefined || '' " >
+            <img src="{{imageAsBinary[2]}}" alt="Car Image"width="200" height="150">
+        </div>
+        
+        <div class="col-md-6 my-3">
+            <label for="formFileMultiple" class="form-label">Add picture 4</label>
+            <input class="form-control" type="file"  id="3" name="picture2"  (change)="onFileSelected($event)">
+        </div>
+        <div *ngIf="imageAsBinary[3] != undefined || '' " >
+            <img src="{{imageAsBinary[3]}}" alt="Car Image"width="200" height="150">
+        </div>
+        
+        <div class="col-md-6 my-3">
+            <label for="formFileMultiple" class="form-label">Add picture 5</label>
+            <input class="form-control" type="file"  id="4" name="picture2"  (change)="onFileSelected($event)">
+        </div>
+        <div *ngIf="imageAsBinary[4] != undefined || '' " >
+            <img src="{{imageAsBinary[4]}}" alt="Car Image"width="200" height="150">
+        </div>
+        
+        <div class="col-md-6 my-3">
+            <label for="formFileMultiple" class="form-label">Add picture 6</label>
+            <input class="form-control" type="file"  id="5" name="picture2"  (change)="onFileSelected($event)">
+        </div>
+        <div *ngIf="imageAsBinary[5] != undefined || '' " >
+            <img src="{{imageAsBinary[5]}}" alt="Car Image"width="200" height="150">
+        </div>
+        
+        <div class="col-md-6 my-3">
+            <label for="formFileMultiple" class="form-label">Add picture 7</label>
+            <input class="form-control" type="file"  id="6" name="picture2"  (change)="onFileSelected($event)">
+        </div>
+        <div *ngIf="imageAsBinary[6] != undefined || '' " >
+            <img src="{{imageAsBinary[6]}}" alt="Car Image"width="200" height="150">
+        </div>
+        
+
+        
+
+        <button class="btn btn-info" routerLink="/themes">Cancel</button>
+        <button class="btn btn-success">Post</button>
+
+
+    </form>
+
 </div>

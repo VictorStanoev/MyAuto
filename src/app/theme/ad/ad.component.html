@@ -1,0 +1,124 @@
+<div *ngIf="ad">
+    <div class="container-fluid">
+
+        <div class="col m-3">
+
+            <div class="row picSlider">
+                <ngb-carousel >
+                    <ng-template *ngIf="ad.pictures[0] != undefined || '' " ngbSlide>
+                        <div class="picsum-img-wrapper">
+                            <img [src]="ad.pictures[0]" width="400" height="300" >
+                        </div>
+                        <div class="carousel-caption">
+                            <!-- <h3>First slide label</h3>
+                            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> -->
+                        </div>
+                    </ng-template>
+                    <ng-template *ngIf="ad.pictures[1] != undefined || '' " ngbSlide>
+                        <div class="picsum-img-wrapper">
+                            <img [src]="ad.pictures[1]" width="400" height="300">
+                        </div>
+                        <div class="carousel-caption">
+                            <!-- <h3>Second slide label</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> -->
+                        </div>
+                    </ng-template>
+                    <ng-template *ngIf="ad.pictures[2] != undefined || '' " ngbSlide>
+                        <div class="picsum-img-wrapper">
+                            <img [src]="ad.pictures[2]" width="400" height="300">
+                        </div>
+                        <div class="carousel-caption">
+                            <!-- <h3>Third slide label</h3>
+                            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p> -->
+                        </div>
+                    </ng-template>
+                    <ng-template *ngIf="ad.pictures[3] != undefined || '' " ngbSlide>
+                        <div class="picsum-img-wrapper">
+                            <img [src]="ad.pictures[3]" width="400" height="300">
+                        </div>
+                        <div class="carousel-caption">
+                            <!-- <h3>Third slide label</h3>
+                            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p> -->
+                        </div>
+                    </ng-template>
+                    <ng-template *ngIf="ad.pictures[4] != undefined || '' " ngbSlide>
+                        <div class="picsum-img-wrapper">
+                            <img [src]="ad.pictures[4]" width="400" height="300">
+                        </div>
+                        <div class="carousel-caption">
+                            <!-- <h3>Third slide label</h3>
+                            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p> -->
+                        </div>
+                    </ng-template>
+                    <ng-template *ngIf="ad.pictures[5] != undefined || '' " ngbSlide>
+                        <div class="picsum-img-wrapper">
+                            <img [src]="ad.pictures[5]" width="400" height="300">
+                        </div>
+                        <div class="carousel-caption">
+                            <!-- <h3>Third slide label</h3>
+                            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p> -->
+                        </div>
+                    </ng-template>
+                    <ng-template *ngIf="ad.pictures[6] != undefined || '' " ngbSlide>
+                        <div class="picsum-img-wrapper">
+                            <img [src]="ad.pictures[6]" width="400" height="300">
+                        </div>
+                        <div class="carousel-caption">
+                            <!-- <h3>Third slide label</h3>
+                            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p> -->
+                        </div>
+                    </ng-template>
+                </ngb-carousel>
+            </div>
+            <div class="py-2">
+                <h2>{{ad.brand}} {{ad.model}}</h2>
+            </div>
+
+            <div class="row pb-5">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>Дата на производство</td>
+                            <td>{{ad.manifactureDate | date:'MMMM y'}} г.</td>
+                        </tr>
+                        <tr>
+                            <td>Тип двигател</td>
+                            <td>{{ad.engineType}}</td>
+                        </tr>
+                        <tr>
+                            <td>Мощност</td>
+                            <td>177 к.с.</td>
+                        </tr>
+                        <tr>
+                            <td>Евростандарт</td>
+                            <td>Евро 4</td>
+                        </tr>
+                        <tr>
+                            <td>Скоростна кутия</td>
+                            <td>{{ad.transmission}}</td>
+                        </tr>
+                        <tr>
+                            <td>Категория</td>
+                            <td>{{ad.category}}</td>
+                        </tr>
+                        <tr>
+                            <td>Пробег</td>
+                            <td>{{ad.mileage}} км.</td>
+                        </tr>
+                        <tr>
+                            <td>Цвят</td>
+                            <td>{{ad.color}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+
+    </div>
+
+    <div *ngIf="!ad">
+        Loading ...
+    </div>
+</div>

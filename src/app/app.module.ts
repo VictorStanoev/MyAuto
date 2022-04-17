@@ -13,12 +13,17 @@ import { HomeComponent } from './home/home.component';
 import { ContentService } from './content.service';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { HttpClientModule } from '@angular/common/http';
+import { SearchComponent } from './search/search.component';
+import { FormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ImageService } from './image.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
@@ -28,10 +33,13 @@ import { HttpClientModule } from '@angular/common/http';
     SharedModule,
     HttpClientModule,
     FontAwesomeModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    NgbModule
   ],
   providers: [
-    ContentService
+    ContentService,
+    ImageService
   ],
   bootstrap: [AppComponent]
 })

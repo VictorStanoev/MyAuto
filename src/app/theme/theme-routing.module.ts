@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthActivate } from '../core/guards/auth.activate';
+import { AdComponent } from './ad/ad.component';
 import { AdsComponent } from './ads/ads.component';
 import { NewAdComponent } from './new-ad/new-ad.component';
 import { NewThemeComponent } from './new-theme/new-theme.component';
@@ -9,27 +10,18 @@ import { ThemesComponent } from './themes/themes.component';
 
 const routes: Routes = [
     {
-        path: 'themes',
+        path:'ads',
         children: [
             {
                 path: '',
                 pathMatch: 'full',
-                component: ThemesComponent
+                component: AdsComponent
             },
             {
-                path: `:themeId`,
-                component: ThemeComponent
+                path: `:adId`,
+                component: AdComponent
             }
         ]
-    },
-    {
-        path: 'add-theme',
-        component: NewThemeComponent,
-        canActivate:[AuthActivate],
-        data: {
-            authenticationRequred: true,
-            authenticationFailureRedirectUrl: '/login'
-        }
     },
     {
         path: 'add-ad',
@@ -39,11 +31,8 @@ const routes: Routes = [
         //     authenticationRequred: true,
         //     authenticationFailureRedirectUrl: '/login'
         // }
-    },
-    {
-        path:'ads',
-        component:AdsComponent
     }
+    
 ];
 
 @NgModule({

@@ -20,7 +20,7 @@ export class AdsComponent{
   fetchAds(): void  {
     this.ads = undefined;
     this.contentService.loadAds().subscribe(x => this.ads = x);
-
+    
     
   }
 }

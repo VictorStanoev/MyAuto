@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ContentService } from 'src/app/content.service';
@@ -8,26 +9,69 @@ import { ContentService } from 'src/app/content.service';
   templateUrl: './new-ad.component.html',
   styleUrls: ['./new-ad.component.scss']
 })
-export class NewAdComponent{
+export class NewAdComponent {
+
+  @Input() cars: string[] = [] || undefined;
+  models: any = [];
+  selectedFile = undefined
+  @Input() imageAsBinary: string[] = [];
 
   constructor(
     private contentService: ContentService,
-    private router: Router
-  ) { }
+    private router: Router,
+    private http: HttpClient
+  ) {
+    this.http.get('assets/CarsInfo/BrandAndModels.json')
+      .subscribe((res) => {
+        this.models = res;
+      });
+  }
 
- 
-    createAd(form:NgForm){
-      if(form.invalid){ return;}
+  onSearchChange(searchValue: any): void {
+    this.cars = [...this.models].filter(x => x.Brand == searchValue).map(x => x.Model);
 
-      this.contentService.saveAd(form.value).subscribe({
-        next: () => {
-          this.router.navigate(['/ads']);
-  
-        },
-        error: (err) => {
-          console.log(err);
-        }
-      })
-    }
+  }
+
+  onFileSelected(event: any) {
+
+    this.selectedFile = event.target.files[0];
+    let reader = new FileReader();
+
+    reader.onloadend = () => {
+      let result = reader.result?.toString();
+      if (result) {
+        let n = event.target.id
+        this.imageAsBinary[+n] = result
+
+        console.log(this.imageAsBinary);
+      }
+
+    };
+    reader.onerror = error => (console.log(error));
+
+    if (this.selectedFile) {
+      reader.readAsDataURL(this.selectedFile);
+    };
+  }
+
+
+  createAd(form: NgForm) {
+    if (form.invalid) { return; }
+
+    form.value.pictures = this.imageAsBinary
+
+    console.log(form.value)
+
+
+    this.contentService.saveAd(form.value).subscribe({
+      next: () => {
+        this.router.navigate(['/ads']);
+
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    })
+  }
 
 }
