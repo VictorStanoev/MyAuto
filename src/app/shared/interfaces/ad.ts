@@ -5,7 +5,7 @@ export interface IAd {
   _id: string;
   brand: string;
   model: string;
-  price: string;
+  price: number;
   currency:string;
   moreInfo:string;
   manifactureDate:Date,

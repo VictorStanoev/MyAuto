@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthActivate } from '../core/guards/auth.activate';
-import { AdComponent } from '../ad/ad/ad.component';
-import { AdsComponent } from '../ad/ads/ads.component';
-import { NewAdComponent } from '../ad/new-ad/new-ad.component';
+import { AdComponent } from './ad/ad.component';
+import { AdsComponent } from './ads/ads.component';
+import { NewAdComponent } from './new-ad/new-ad.component';
 
 const routes: Routes = [
     {
-        path:'theme',
+        path:'ads',
         children: [
             {
                 path: '',
@@ -15,19 +15,19 @@ const routes: Routes = [
                 component: AdsComponent
             },
             {
-                path: `:themeId`,
+                path: `:adId`,
                 component: AdComponent
             }
         ]
     },
     {
-        path: 'theme-ad',
+        path: 'add-ad',
         component: NewAdComponent,
-        canActivate:[AuthActivate],
-        data: {
-            authenticationRequred: true,
-            authenticationFailureRedirectUrl: '/login'
-        }
+        // canActivate:[AuthActivate],
+        // data: {
+        //     authenticationRequred: true,
+        //     authenticationFailureRedirectUrl: '/login'
+        // }
     }
     
 ];
@@ -36,4 +36,4 @@ const routes: Routes = [
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule]
 })
-export class ThemeRoutingModule { }
+export class AdRoutingModule { }

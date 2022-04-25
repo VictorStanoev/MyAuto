@@ -65,7 +65,7 @@ export class NewAdComponent {
 
     this.contentService.saveAd(form.value).subscribe({
       next: () => {
-        this.router.navigate(['/ads']);
+        this.router.navigate(['/']);
 
       },
       error: (err) => {

@@ -4,13 +4,15 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { WelcomeMessageComponent } from './welcome-message/welcome-message.component';
 import { RouterModule } from '@angular/router';
 import { CustomValidatorDirective } from './custom-validator.directive';
+import { TextShortenPipe } from './text-shorten.pipe';
 
 
 
 @NgModule({
   declarations: [
     WelcomeMessageComponent,
-    CustomValidatorDirective
+    CustomValidatorDirective,
+    TextShortenPipe
   ],
   imports: [
     CommonModule,
@@ -19,7 +21,8 @@ import { CustomValidatorDirective } from './custom-validator.directive';
   ],
   exports:[
     WelcomeMessageComponent,
-    CustomValidatorDirective
+    CustomValidatorDirective,
+    TextShortenPipe
   ]
 })
 export class SharedModule { }

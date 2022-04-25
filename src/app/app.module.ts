@@ -17,6 +17,7 @@ import { SearchComponent } from './search/search.component';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ImageService } from './image.service';
+import { AdModule } from './ad/ad.module';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { ImageService } from './image.service';
     CoreModule,
     UserModule,
     ThemeModule,
+    AdModule,
     SharedModule,
     HttpClientModule,
     FontAwesomeModule,

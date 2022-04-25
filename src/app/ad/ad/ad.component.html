@@ -1,13 +1,13 @@
 <div *ngIf="ad">
-    <div class="container-fluid">
+    <div class="container">
 
         <div class="col m-3">
 
             <div class="row picSlider">
-                <ngb-carousel >
+                <ngb-carousel>
                     <ng-template *ngIf="ad.pictures[0] != undefined || '' " ngbSlide>
                         <div class="picsum-img-wrapper">
-                            <img [src]="ad.pictures[0]" width="400" height="300" >
+                            <img [src]="ad.pictures[0]" width="400" height="300">
                         </div>
                         <div class="carousel-caption">
                             <!-- <h3>First slide label</h3>
@@ -111,6 +111,25 @@
                         </tr>
                     </tbody>
                 </table>
+            </div>
+            <div class="row pb-5">
+                <h6>Ad information:</h6>
+                <hr>
+                <div>
+                    {{ad.moreInfo}}
+
+                </div>
+            </div>
+            <div class="row pb-5">
+                <h6>Contacts:</h6>
+                <hr>
+                
+                <div>
+                  email: <b>{{ad.userId.email}}</b>
+                </div>
+                <div>
+                  telephone: <b>{{ad.userId.telephone}}</b> 
+                </div>
             </div>
         </div>
 

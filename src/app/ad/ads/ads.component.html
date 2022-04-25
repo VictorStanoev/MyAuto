@@ -2,6 +2,9 @@
 
     <main>
         <div class="" *ngIf="ads">
+            <div *ngIf="ads.length==0">
+                <h3>Sorry! No cars were found with this search criteria!</h3>
+            </div>
             <div *ngFor="let ad of ads" class="theme-container">
                 <div class="" [routerLink]="ad._id">
 
@@ -40,8 +43,7 @@
                         <tr>
                             <td colspan="4" style="width:440px;height:50px;padding-left:4px">
                                 manifacture date. - {{ad.manifactureDate | date:'MMMM y'}} г., mileage - {{ad.mileage}}
-                                km, color - {{ad.color}}, {{ad.moreInfo | slice: 0:60}}<br>Особености - 4(5) Врати, Auto
-                                Start Stop function, Bluetoo...<br>Region:
+                                km, color - {{ad.color}}, {{ad.moreInfo | textShorten:60}}...<br><br>Region:
                                 София, гр. София
                             </td>
                         </tr>
@@ -78,8 +80,7 @@
             </div>
         </div>
         <div *ngIf="!ads">Loading...</div>
-
-
+        
 
     </main>
 

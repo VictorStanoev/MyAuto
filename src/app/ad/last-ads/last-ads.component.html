@@ -1,0 +1,106 @@
+<div class="container">
+    <h3>Latest ads</h3>
+    <hr>
+    <main>
+        <div class="card-deck row" *ngIf="recentAds">
+
+            <div *ngFor="let ad of recentAds" class="col-md-4 mb-3">
+                <!-- <div class="col" [routerLink]='ad._id'>
+
+
+                    <tbody> -->
+                <!-- <tr>
+                            <td style="width:220px;height:10px;"></td>
+                            <td style="width:162px;height:10px;"></td>
+                            <td style="width:135px;height:10px;"></td>
+                            <td style="width:37px;height:10px;"></td>
+                            <td style="width:106px;height:10px;"></td>
+                        </tr> -->
+                <!-- <tr>
+                            <td rowspan="2">
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td class="algcent valgmid"><a class="photoLink"><img
+                                                        src="{{ad.pictures[0]}}" style="object-fit: cover;" width="200"
+                                                        height="150" class="noborder"
+                                                        alt="Обява за продажба на VW Touran 2.0.DSG.... ~27 000 лв."
+                                                        data-geo=""></a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                            <td class="valgtop" style="width:162px;height:40px;padding-left:4px">
+                                <div>{{ad.model}} {{ad.brand}}</div>
+                            </td>
+                            <td class="algright valgtop" style="width:135px;height:40px;padding-left:4px">
+                                <div><span class="price">{{ad.price}} {{ad.currency}}.</span></div>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td colspan="4" style="width:440px;height:50px;padding-left:4px">
+                                manifacture date. - {{ad.manifactureDate | date:'MMMM y'}} г., mileage -
+                                {{ad.mileage}}
+                                km, color - {{ad.color}}, {{ad.moreInfo | textShorten:60}}...<br><br>Region:
+                                София, гр. София
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="5" style="height:10px;"></td>
+                        </tr>
+                    </tbody> -->
+                <!-- <div class="">
+                        <a class="">
+                            <h2>{{ad.model}} {{ad.brand}}</h2>
+                        </a>
+                        <div class="columns">
+                            <div>
+                                <div>EngineType: {{ad.engineType}}</div>
+                                <div>Transmission: {{ad.transmission}}</div>
+                                <div>Catergory: {{ad.category}}</div>
+                                <div>Mileage: {{ad.mileage}}</div>
+                                <div>Color: {{ad.color}}</div>
+                                <div>Manifacture Date: {{ad.manifactureDate | date:'MMM y' }}</div>
+
+                                <div>CreatedAd: <time>{{ad.created_at}}</time></div>
+                                <div class="nick-name">
+                                    <p>Username: <span>{{ad.userId.username}}</span></p>
+                                </div>
+                            </div>
+                            <div class="subscribers">
+                                <button *ngIf="isLogged" class="subscribe">Subscribe</button>
+                                <p>Subscribers: <span>{{theme.subscribers.length}}</span></p>
+                            </div>
+                        </div>
+                    </div> -->
+                <!-- </div> -->
+                <div class="card" [routerLink]='ad._id'>
+                    <div class="row">
+                        <div class="col">
+                            <img class="card-img-top " src="{{ad.pictures[0]}}" height="150px" width="150px" alt="Card image">
+
+                        </div>
+                        <div class="col">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ad.model}} {{ad.brand}}</h5>
+                                <h4>{{ad.price}} {{ad.currency}}</h4>
+                                <p class="card-text">{{ad.mileage}} k km. </p>
+                                <p class="card-text"><small class="text-muted">Last update {{ ad.updatedAt | date: 'dd/MM/yyyy HH:mm'}}</small></p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        <div *ngIf="!recentAds">Loading...</div>
+
+
+
+    </main>
+
+
+</div>
