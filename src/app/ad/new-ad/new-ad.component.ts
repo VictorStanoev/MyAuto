@@ -3,6 +3,7 @@ import { Component, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ContentService } from 'src/app/content.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-new-ad',
@@ -16,15 +17,21 @@ export class NewAdComponent {
   selectedFile = undefined
   @Input() imageAsBinary: string[] = [];
 
+  form: FormGroup;
+
   constructor(
     private contentService: ContentService,
     private router: Router,
-    private http: HttpClient
+    private http: HttpClient,
+    private fb: FormBuilder,
   ) {
     this.http.get('assets/CarsInfo/BrandAndModels.json')
       .subscribe((res) => {
         this.models = res;
       });
+
+      this.form = this.fb.group({
+        brand: ['', [Validators.required]]});
   }
 
   onSearchChange(searchValue: any): void {
@@ -56,6 +63,7 @@ export class NewAdComponent {
 
 
   createAd(form: NgForm) {
+    console.log(form)
     if (form.invalid) { return; }
 
     form.value.pictures = this.imageAsBinary

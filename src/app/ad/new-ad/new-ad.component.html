@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-md-3">
                 <label for="brand">Brand</label>
-                <select name="brand" id="brand" class="form-control form-control-sm" ngModel
+                <select name="brand" id="brand" class="form-control form-control-sm" ngModel #brand="ngModel" required
                     (ngModelChange)="onSearchChange($event)">
                     <option value="AC">AC</option>
                     <option value="Abarth">Abarth</option>
@@ -160,12 +160,25 @@
                     <option value="София">София</option>
                     <option value="Чайка">Чайка</option>
                 </select>
+
+                <div *ngIf="brand.touched && brand.invalid" class="alert alert-danger">
+                    <div *ngIf="brand.errors?.['required']">
+                        Brand is required
+                    </div>
+                </div>
             </div>
+
             <div class="col-md-3">
                 <label for="model">Model</label>
-                <select name="model" id="model" class="form-control form-control-sm" ngModel required>
+                <select name="model" id="model" class="form-control form-control-sm" ngModel #model="ngModel" required>
                     <option *ngFor="let car of cars" value="{{car}}">{{car}}</option>
                 </select>
+
+                <div *ngIf="model.touched && model.invalid" class="alert alert-danger">
+                    <div *ngIf="model.errors?.['required']">
+                        Model is required
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -173,33 +186,54 @@
             <div class="col-md-3">
                 <label for="manifactureDate">Manifacture Date</label>
                 <input name="manifactureDate" id="manifactureDate" class="form-control form-control-sm" type="date"
-                    ngModel required>
+                    ngModel required #date="ngModel">
+
+                <div *ngIf="date.touched && date.invalid" class="alert alert-danger">
+                    <div *ngIf="date.errors?.['required']">
+                        Date is required
+                    </div>
+                </div>
             </div>
 
             <div class="col-md-3">
                 <label for="engineType">Engyne Type</label>
-                <select name="engineType" id="engineType" class="form-control form-control-sm" ngModel required>
+                <select name="engineType" id="engineType" class="form-control form-control-sm" ngModel required
+                    #engineType="ngModel">
                     <option value="diesel">diesel</option>
                     <option value="petrol">petrol</option>
                     <option value="hibrid">hibrid</option>
                     <option value="electric">electric</option>
                 </select>
+
+                <div *ngIf="engineType.touched && engineType.invalid" class="alert alert-danger">
+                    <div *ngIf="engineType.errors?.['required']">
+                        EngineType is required
+                    </div>
+                </div>
             </div>
         </div>
 
         <div class="row">
             <div class="col-md-3">
                 <label for="transmission">Transmision</label>
-                <select name="transmission" id="transmission" class="form-control form-control-sm" ngModel required>
+                <select name="transmission" id="transmission" class="form-control form-control-sm"
+                    #transmission="ngModel" ngModel required>
                     <option value="manual">manual</option>
                     <option value="automatic">automatic</option>
                     <option value="semiautomatic">semiautomatic</option>
                 </select>
+
+                <div *ngIf="transmission.touched && transmission.invalid" class="alert alert-danger">
+                    <div *ngIf="transmission.errors?.['required']">
+                        Transmission is required
+                    </div>
+                </div>
             </div>
 
             <div class="col-md-3">
                 <label for="category">Category</label>
-                <select name="category" id="category" class="form-control form-control-sm" ngModel required>
+                <select name="category" id="category" class="form-control form-control-sm" ngModel #category="ngModel"
+                    required>
                     <option value="van">van</option>
                     <option value="jeep">jeep</option>
                     <option value="sedan">sedan</option>
@@ -208,19 +242,38 @@
                     <option value="limo">limo</option>
                     <option value="hatchback">hatchback</option>
                 </select>
+
+
+                <div *ngIf="category.touched && category.invalid" class="alert alert-danger">
+                    <div *ngIf="category.errors?.['required']">
+                        Category is required
+                    </div>
+                </div>
             </div>
         </div>
 
         <div class="row">
             <div class="col-md-3">
-                <label for="mileage">Мileage in thousand km</label>
+                <label for="mileage">Мileage in km</label>
                 <input type="text" name="mileage" autocomplete="off" class="form-control form-control-sm" id="mileage"
-                    maxlength="4" ngModel required>
+                    ngModel required maxlength="7" pattern="^\d+$" #mileage="ngModel">
+
+                <div *ngIf="mileage.touched && mileage.invalid" class="alert alert-danger">
+                    <div>
+                        <div *ngIf="mileage.errors?.['required']">
+                            Mileage is required
+                        </div>
+                        <div *ngIf="mileage.errors?.['pattern']">
+                            Allowed only numbers
+                        </div>
+                    </div>
+
+                </div>
             </div>
 
             <div class="col-md-3">
                 <label for="color">Color</label>
-                <select name="color" id="color" class="form-control form-control-sm" ngModel required>
+                <select name="color" id="color" class="form-control form-control-sm" ngModel required #color="ngModel">
                     <option value="Banana">Banana</option>
                     <option value="Beata">Beata</option>
                     <option value="Beige">Beige</option>
@@ -263,6 +316,13 @@
                     <option value="White">White</option>
                     <option value="Yellow">Yellow</option>
                 </select>
+
+                <div *ngIf="color.touched && color.invalid" class="alert alert-danger">
+                    <div *ngIf="color.errors?.['required']">
+                        Color is required
+                    </div>
+
+                </div>
             </div>
         </div>
 
@@ -270,86 +330,117 @@
             <div class="col-md-3">
                 <label for="price">Price</label>
                 <input type="text" name="price" autocomplete="off" id="price" class="form-control form-control-sm"
-                    maxlength="6" ngModel required>
+                    maxlength="6" ngModel required #price="ngModel" pattern="^\d+$">
+
+                <div *ngIf="price.touched && price.invalid" class="alert alert-danger">
+                    <div>
+                        <div *ngIf="price.errors?.['required']">
+                            Price is required
+                        </div>
+                        <div *ngIf="price.errors?.['pattern']">
+                            Allowed only numbers
+                        </div>
+                    </div>
+
+                </div>
             </div>
 
             <div class="col-md-3">
                 <label for="currency">Currency</label>
-                <select name="currency" id="currency" class="form-control form-control-sm" ngModel required>
+                <select name="currency" id="currency" class="form-control form-control-sm" ngModel required
+                    #currency="ngModel">
                     <option value="лв.">BGN</option>
                     <option value="EUR">EUR</option>
                     <option value="USD">USD</option>
                 </select>
+
+                <div *ngIf="currency.touched && currency.invalid" class="alert alert-danger">
+
+                    <div *ngIf="currency.errors?.['required']">
+                        Currency is required
+                    </div>
+                </div>
             </div>
         </div>
 
         <div class="col-md-6 mb-3">
             <label for="moreInfo">AD INFORMATION: </label>
             <textarea type="text" name="moreInfo" id="moreInfo" class="form-control form-control-sm" rows="4" ngModel
-                requred minlength="10" maxlength="300"></textarea>
+                requred minlength="10" maxlength="500" #moreInfo="ngModel"></textarea>
+
+            <div *ngIf="moreInfo.touched && moreInfo.invalid" class="alert alert-danger">
+                <div>
+                    <div *ngIf="moreInfo.errors?.['required']">
+                        Information is required
+                    </div>
+                    <div *ngIf="moreInfo.errors?.['minlength']">
+                        Information should be atleast 10 characters
+                    </div>
+                </div>
+            </div>
         </div>
 
 
         <div class="col-md-6 my-3">
             <label for="formFileMultiple" class="form-label">Add picture 1</label>
-            <input class="form-control" type="file"  id="0" name="picture1"  (change)="onFileSelected($event)">
+            <input class="form-control" type="file" id="0" name="picture1" accept="image/png, image/gif, image/jpeg" (change)="onFileSelected($event)">
         </div>
-        <div *ngIf="imageAsBinary[0] != undefined || ''" >
+        <div *ngIf="imageAsBinary[0] != undefined || ''">
             <img src="{{imageAsBinary[0]}}" alt="Car Image" width="200" height="150">
         </div>
 
 
         <div class="col-md-6 my-3">
             <label for="formFileMultiple" class="form-label">Add picture 2</label>
-            <input class="form-control" type="file"  id="1" name="picture2"  (change)="onFileSelected($event)">
+            <input class="form-control" type="file" id="1" name="picture2" accept="image/png, image/gif, image/jpeg" (change)="onFileSelected($event)">
         </div>
-        <div *ngIf="imageAsBinary[1] != undefined || '' " >
-            <img src="{{imageAsBinary[1]}}" alt="Car Image"width="200" height="150">
+        <div *ngIf="imageAsBinary[1] != undefined || '' ">
+            <img src="{{imageAsBinary[1]}}" alt="Car Image" width="200" height="150">
         </div>
-        
-        
+
+
         <div class="col-md-6 my-3">
             <label for="formFileMultiple" class="form-label">Add picture 3</label>
-            <input class="form-control" type="file"  id="2" name="picture2"  (change)="onFileSelected($event)">
+            <input class="form-control" type="file" id="2" name="picture2" accept="image/png, image/gif, image/jpeg" (change)="onFileSelected($event)">
         </div>
-        <div *ngIf="imageAsBinary[2] != undefined || '' " >
-            <img src="{{imageAsBinary[2]}}" alt="Car Image"width="200" height="150">
+        <div *ngIf="imageAsBinary[2] != undefined || '' ">
+            <img src="{{imageAsBinary[2]}}" alt="Car Image" width="200" height="150">
         </div>
-        
+
         <div class="col-md-6 my-3">
             <label for="formFileMultiple" class="form-label">Add picture 4</label>
-            <input class="form-control" type="file"  id="3" name="picture2"  (change)="onFileSelected($event)">
+            <input class="form-control" type="file" id="3" name="picture2" accept="image/png, image/gif, image/jpeg" (change)="onFileSelected($event)">
         </div>
-        <div *ngIf="imageAsBinary[3] != undefined || '' " >
-            <img src="{{imageAsBinary[3]}}" alt="Car Image"width="200" height="150">
+        <div *ngIf="imageAsBinary[3] != undefined || '' ">
+            <img src="{{imageAsBinary[3]}}" alt="Car Image" width="200" height="150">
         </div>
-        
+
         <div class="col-md-6 my-3">
             <label for="formFileMultiple" class="form-label">Add picture 5</label>
-            <input class="form-control" type="file"  id="4" name="picture2"  (change)="onFileSelected($event)">
+            <input class="form-control" type="file" id="4" name="picture2" accept="image/png, image/gif, image/jpeg" (change)="onFileSelected($event)">
         </div>
-        <div *ngIf="imageAsBinary[4] != undefined || '' " >
-            <img src="{{imageAsBinary[4]}}" alt="Car Image"width="200" height="150">
+        <div *ngIf="imageAsBinary[4] != undefined || '' ">
+            <img src="{{imageAsBinary[4]}}" alt="Car Image" width="200" height="150">
         </div>
-        
+
         <div class="col-md-6 my-3">
             <label for="formFileMultiple" class="form-label">Add picture 6</label>
-            <input class="form-control" type="file"  id="5" name="picture2"  (change)="onFileSelected($event)">
+            <input class="form-control" type="file" id="5" name="picture2" accept="image/png, image/gif, image/jpeg" (change)="onFileSelected($event)">
         </div>
-        <div *ngIf="imageAsBinary[5] != undefined || '' " >
-            <img src="{{imageAsBinary[5]}}" alt="Car Image"width="200" height="150">
+        <div *ngIf="imageAsBinary[5] != undefined || '' ">
+            <img src="{{imageAsBinary[5]}}" alt="Car Image" width="200" height="150">
         </div>
-        
+
         <div class="col-md-6 my-3">
             <label for="formFileMultiple" class="form-label">Add picture 7</label>
-            <input class="form-control" type="file"  id="6" name="picture2"  (change)="onFileSelected($event)">
+            <input class="form-control" type="file" id="6" name="picture2" accept="image/png, image/gif, image/jpeg" (change)="onFileSelected($event)">
         </div>
-        <div *ngIf="imageAsBinary[6] != undefined || '' " >
-            <img src="{{imageAsBinary[6]}}" alt="Car Image"width="200" height="150">
+        <div *ngIf="imageAsBinary[6] != undefined || '' ">
+            <img src="{{imageAsBinary[6]}}" alt="Car Image" width="200" height="150">
         </div>
-        
 
-        
+
+
 
         <button class="btn btn-info" routerLink="/themes">Cancel</button>
         <button class="btn btn-success">Post</button>

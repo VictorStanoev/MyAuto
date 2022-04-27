@@ -1,11 +1,11 @@
 <div class="container">
 
     <main>
-        <div class="" *ngIf="ads">
-            <div *ngIf="ads.length==0">
+        <div class="" *ngIf="myAds">
+            <div *ngIf="myAds.length==0">
                 <h3>Sorry! No cars were found with this search criteria!</h3>
             </div>
-            <div *ngFor="let ad of ads" class="theme-container">
+            <div *ngFor="let ad of myAds" class="theme-container">
                 <div class="" [routerLink]="ad._id">
 
 
@@ -26,7 +26,7 @@
                                                         src="{{ad.pictures[0]}}"
                                                         style="object-fit: cover;" width="200" height="150"
                                                         class="noborder"
-                                                        alt="Обява за продажба на VW Touran 2.0.DSG.... ~27 000 лв."
+                                                        alt="car image"
                                                         data-geo=""></a></td>
                                         </tr>
                                     </tbody>
@@ -56,7 +56,7 @@
                 </div>
             </div>
         </div>
-        <div *ngIf="!ads">
+        <div *ngIf="!myAds">
         
             <div id="loader-wrapper">
                 <div id="loader"></div>

@@ -32,6 +32,10 @@ export class ContentService {
     return this.http.post<IAd>(`${API_URL}/ads`, data, { withCredentials: true });
   }
 
+  loadAdsByUser() {
+
+    return this.http.get<IAd[]>(`${API_URL}/ads/myads`, { withCredentials: true });
+  }
 
   loadAds() {
 

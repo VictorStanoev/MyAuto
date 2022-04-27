@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { AdRoutingModule } from './ad-routing.module';
 import { LastAdsComponent } from './last-ads/last-ads.component';
+import { MyAdsComponent } from './my-ads/my-ads.component';
 
 
 
@@ -18,7 +19,8 @@ import { LastAdsComponent } from './last-ads/last-ads.component';
     AdComponent,
     AdsComponent,
     NewAdComponent,
-    LastAdsComponent
+    LastAdsComponent,
+    MyAdsComponent
   ],
   imports: [
     CommonModule,

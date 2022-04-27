@@ -3,11 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthActivate } from '../core/guards/auth.activate';
 import { AdComponent } from './ad/ad.component';
 import { AdsComponent } from './ads/ads.component';
+import { MyAdsComponent } from './my-ads/my-ads.component';
 import { NewAdComponent } from './new-ad/new-ad.component';
 
 const routes: Routes = [
     {
-        path:'ads',
+        path: 'ads',
         children: [
             {
                 path: '',
@@ -23,13 +24,22 @@ const routes: Routes = [
     {
         path: 'add-ad',
         component: NewAdComponent,
-        // canActivate:[AuthActivate],
-        // data: {
-        //     authenticationRequred: true,
-        //     authenticationFailureRedirectUrl: '/login'
-        // }
+        canActivate: [AuthActivate],
+        data: {
+            authenticationRequred: true,
+            authenticationFailureRedirectUrl: '/login'
+        }
+    },
+    {
+        path: 'my-ads',
+        component: MyAdsComponent,
+        canActivate:[AuthActivate],
+        data: {
+            authenticationRequred: true,
+            authenticationFailureRedirectUrl: '/login'
+        }
     }
-    
+
 ];
 
 @NgModule({
