@@ -46,6 +46,10 @@ export class ContentService {
     return this.http.get<IAd>(`${API_URL}/ads/${id}`, { withCredentials: true });
   }
 
+  deleteAd(id: string) {
+    return this.http.delete<IAd>(`${API_URL}/ads/${id}`, { withCredentials: true });
+  }
+
   loadLatestAds(limit?: number) {
 
     const query = limit ? `?limit=${limit}` : ''

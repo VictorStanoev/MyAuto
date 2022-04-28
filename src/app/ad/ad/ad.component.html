@@ -75,39 +75,32 @@
             </div>
 
             <div class="row pb-5">
-                <table>
+                <table style="max-width: 500px;">
                     <tbody>
                         <tr>
-                            <td>Дата на производство</td>
-                            <td>{{ad.manifactureDate | date:'MMMM y'}} г.</td>
+                            <td>Manifacture Date</td>
+                            <td><b>{{ad.manifactureDate | date:'MMMM y'}} г.</b></td>
                         </tr>
                         <tr>
-                            <td>Тип двигател</td>
-                            <td>{{ad.engineType}}</td>
+                            <td>Engine Type</td>
+                            <td><b>{{ad.engineType}}</b></td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Transmission</td>
+                            <td><b>{{ad.transmission}}</b></td>
                         </tr>
                         <tr>
-                            <td>Мощност</td>
-                            <td>177 к.с.</td>
+                            <td>Category</td>
+                            <td><b>{{ad.category}}</b></td>
                         </tr>
                         <tr>
-                            <td>Евростандарт</td>
-                            <td>Евро 4</td>
+                            <td>Mileage</td>
+                            <td><b>{{ad.mileage}} км.</b></td>
                         </tr>
                         <tr>
-                            <td>Скоростна кутия</td>
-                            <td>{{ad.transmission}}</td>
-                        </tr>
-                        <tr>
-                            <td>Категория</td>
-                            <td>{{ad.category}}</td>
-                        </tr>
-                        <tr>
-                            <td>Пробег</td>
-                            <td>{{ad.mileage}} км.</td>
-                        </tr>
-                        <tr>
-                            <td>Цвят</td>
-                            <td>{{ad.color}}</td>
+                            <td>Color</td>
+                            <td><b>{{ad.color}}</b></td>
                         </tr>
                     </tbody>
                 </table>
@@ -134,6 +127,14 @@
         </div>
 
 
+        <div *ngIf="ad.userId.email == userEmail" class="row">
+            <div>
+                <button type="button" class="btn btn-warning">Edit</button>
+                <button type="button" class="btn btn-danger" (click)="deleteAd(ad._id)">Delete</button>
+
+            </div>
+            
+        </div>
 
     </div>
 

@@ -3,7 +3,13 @@
     <main>
         <div class="" *ngIf="ads">
             <div *ngIf="ads.length==0">
-                <h3>Sorry! No cars were found with this search criteria!</h3>
+                
+                <div class="card mt-3">
+                    <div class="card-body">
+                        <h3>Sorry! No cars were found with this search criteria!</h3>
+                        <button type="button" class="btn btn-primary mt-3" [routerLink]="'/'">Go Back</button>
+                    </div>
+                  </div>
             </div>
             <div *ngFor="let ad of ads" class="theme-container">
                 <div class="" [routerLink]="ad._id">

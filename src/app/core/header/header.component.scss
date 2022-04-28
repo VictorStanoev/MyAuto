@@ -1,8 +1,8 @@
 /* header  */
     
 header {
-  background: rgb(0, 128, 182);
-  background: linear-gradient(0deg, rgba(0, 128, 182, 1) 0%, rgba(0, 128, 182, 1) 35%, rgba(0, 212, 255, 1) 100%);
+  background: rgb(182, 0, 57, 1);
+  background: linear-gradient(0deg, rgba(182, 0, 57, 1) 0%, rgba(147, 6, 54, 1) 35%, rgba(214, 13, 102, 1) 100%);
 }
 
 header ul {
@@ -19,7 +19,7 @@ header ul span {
 }
 
 .mini-navbar ul {
-  border: 1px solid #00d4ff;
+  border: 1px solid #c9b8be;
   border-radius: 0.3em;
   padding-left: 0;
   width: 100%;
@@ -38,7 +38,7 @@ header a {
 }
 
 nav {
-  border-top: 1px solid #00acf4;
+  border-top: 1px solid #cd6586;
 }
 
 .logo {
@@ -65,11 +65,11 @@ nav {
 /* mini-navbar */
 
 .mini-navbar ul {
-  background-color: #6ba1b8;
+  background-color: #8c153b;
   border-radius: 5px;
 }
 
 .mini-navbar ul li+li {
-  border-left: 1px solid lightgrey;
+  border-left: 1px solid #efdceb;
   padding-left: .5em;
 }

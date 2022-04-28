@@ -11,8 +11,8 @@
                     </i>
                 </span>
             </label>
-            <input #emailInput="ngModel" [appCustomValidator]="emailValidator" ngModel class="input-error"  type="email" name="email" id="email"
-                placeholder="john.doe@gmail.com"  required email >
+            <input #emailInput="ngModel" [appCustomValidator]="emailValidator" ngModel class="input-error" type="email"
+                name="email" id="email" placeholder="john.doe@gmail.com" required email>
         </p>
 
         <ng-container *ngIf="emailInput.touched">
@@ -47,7 +47,7 @@
         </ng-container>
 
 
-        <button >Login</button>
+        <button>Login</button>
 
         <p class="text-center">
             Have an account?
