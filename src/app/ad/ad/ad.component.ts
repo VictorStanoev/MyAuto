@@ -4,6 +4,7 @@ import { ContentService } from '../../content.service';
 import { IAd } from '../../shared/interfaces';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/user/user.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-ad',
@@ -15,6 +16,7 @@ export class AdComponent {
   images = [1, 2, 3].map((n) => `../../assets/pic${n}.jpg`);
   ad: IAd | undefined;
   userEmail: string | undefined;
+  inUpdateMode = false;
 
   constructor(
     private contentService: ContentService,
@@ -46,6 +48,23 @@ export class AdComponent {
         }
       });
 
+  }
+
+  updateAd(form: NgForm): void {
+    console.log(form)
+    const adId = this.ad?._id
+
+    if (form.invalid) { return; }
+
+    this.contentService.updateAd(adId!,form.value).subscribe({
+      next: () => {
+        this.router.navigate([`/`]);
+
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    })
   }
 
 }

@@ -46,6 +46,10 @@ export class ContentService {
     return this.http.get<IAd>(`${API_URL}/ads/${id}`, { withCredentials: true });
   }
 
+  updateAd(id:string, data: any) {
+    return this.http.post<IAd>(`${API_URL}/ads/update/${id}`, data, { withCredentials: true });
+  }
+
   deleteAd(id: string) {
     return this.http.delete<IAd>(`${API_URL}/ads/${id}`, { withCredentials: true });
   }

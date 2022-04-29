@@ -1,8 +1,6 @@
 <div *ngIf="ad">
     <div class="container">
-
         <div class="col m-3">
-
             <div class="row picSlider">
                 <ngb-carousel>
                     <ng-template *ngIf="ad.pictures[0] != undefined || '' " ngbSlide>
@@ -10,8 +8,6 @@
                             <img [src]="ad.pictures[0]" width="400" height="300">
                         </div>
                         <div class="carousel-caption">
-                            <!-- <h3>First slide label</h3>
-                            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> -->
                         </div>
                     </ng-template>
                     <ng-template *ngIf="ad.pictures[1] != undefined || '' " ngbSlide>
@@ -19,8 +15,6 @@
                             <img [src]="ad.pictures[1]" width="400" height="300">
                         </div>
                         <div class="carousel-caption">
-                            <!-- <h3>Second slide label</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> -->
                         </div>
                     </ng-template>
                     <ng-template *ngIf="ad.pictures[2] != undefined || '' " ngbSlide>
@@ -28,8 +22,6 @@
                             <img [src]="ad.pictures[2]" width="400" height="300">
                         </div>
                         <div class="carousel-caption">
-                            <!-- <h3>Third slide label</h3>
-                            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p> -->
                         </div>
                     </ng-template>
                     <ng-template *ngIf="ad.pictures[3] != undefined || '' " ngbSlide>
@@ -37,8 +29,6 @@
                             <img [src]="ad.pictures[3]" width="400" height="300">
                         </div>
                         <div class="carousel-caption">
-                            <!-- <h3>Third slide label</h3>
-                            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p> -->
                         </div>
                     </ng-template>
                     <ng-template *ngIf="ad.pictures[4] != undefined || '' " ngbSlide>
@@ -46,8 +36,6 @@
                             <img [src]="ad.pictures[4]" width="400" height="300">
                         </div>
                         <div class="carousel-caption">
-                            <!-- <h3>Third slide label</h3>
-                            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p> -->
                         </div>
                     </ng-template>
                     <ng-template *ngIf="ad.pictures[5] != undefined || '' " ngbSlide>
@@ -55,8 +43,6 @@
                             <img [src]="ad.pictures[5]" width="400" height="300">
                         </div>
                         <div class="carousel-caption">
-                            <!-- <h3>Third slide label</h3>
-                            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p> -->
                         </div>
                     </ng-template>
                     <ng-template *ngIf="ad.pictures[6] != undefined || '' " ngbSlide>
@@ -64,81 +50,326 @@
                             <img [src]="ad.pictures[6]" width="400" height="300">
                         </div>
                         <div class="carousel-caption">
-                            <!-- <h3>Third slide label</h3>
-                            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p> -->
                         </div>
                     </ng-template>
                 </ngb-carousel>
             </div>
-            <div class="py-2">
-                <h2>{{ad.brand}} {{ad.model}}</h2>
-            </div>
 
-            <div class="row pb-5">
-                <table style="max-width: 500px;">
-                    <tbody>
-                        <tr>
-                            <td>Manifacture Date</td>
-                            <td><b>{{ad.manifactureDate | date:'MMMM y'}} г.</b></td>
-                        </tr>
-                        <tr>
-                            <td>Engine Type</td>
-                            <td><b>{{ad.engineType}}</b></td>
-                        </tr>
-                        
-                        <tr>
-                            <td>Transmission</td>
-                            <td><b>{{ad.transmission}}</b></td>
-                        </tr>
-                        <tr>
-                            <td>Category</td>
-                            <td><b>{{ad.category}}</b></td>
-                        </tr>
-                        <tr>
-                            <td>Mileage</td>
-                            <td><b>{{ad.mileage}} км.</b></td>
-                        </tr>
-                        <tr>
-                            <td>Color</td>
-                            <td><b>{{ad.color}}</b></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="row pb-5">
-                <h6>Ad information:</h6>
-                <hr>
-                <div>
-                    {{ad.moreInfo}}
+            <ng-container *ngIf="inUpdateMode">
+                <form #form="ngForm" (ngSubmit)="updateAd(form)">
+                    <div class="row my-3">
 
+                        <div class="row my-2">
+                            <div class="col-md-3">
+                                <label for="brand">Brand</label>
+                                <input name="brand" id="brand" #brand="ngModel" class="form-control form-control-sm"
+                                    [ngModel]="ad!.brand" required>
+
+                                <div *ngIf="brand.touched && brand.invalid" class="alert alert-danger">
+                                    <div *ngIf="brand.errors?.['required']">
+                                        Brand is required
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label for="model">Model</label>
+                                <input name="model" id="model" class="form-control form-control-sm" ngModel
+                                    #model="ngModel" [ngModel]="ad!.model" required>
+
+                                <div *ngIf="model.touched && model.invalid" class="alert alert-danger">
+                                    <div *ngIf="model.errors?.['required']">
+                                        Model is required
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row my-2">
+                            <div class="col-md-3">
+                                <label for="manifactureDate">Manifacture Date</label>
+                                <input name="manifactureDate" id="manifactureDate" class="form-control form-control-sm"
+                                    type="date" [ngModel]="ad!.manifactureDate" ngModel required #date="ngModel">
+
+                                <div *ngIf="date.touched && date.invalid" class="alert alert-danger">
+                                    <div *ngIf="date.errors?.['required']">
+                                        Date is required
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label for="engineType">Engyne Type</label>
+                                <select name="engineType" id="engineType" class="form-control form-control-sm" ngModel
+                                    [ngModel]="ad!.engineType" required #engineType="ngModel">
+                                    <option value="diesel">diesel</option>
+                                    <option value="petrol">petrol</option>
+                                    <option value="hibrid">hibrid</option>
+                                    <option value="electric">electric</option>
+                                </select>
+
+                                <div *ngIf="engineType.touched && engineType.invalid" class="alert alert-danger">
+                                    <div *ngIf="engineType.errors?.['required']">
+                                        EngineType is required
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row my-2">
+                            <div class="col-md-3">
+                                <label for="transmission">Transmision</label>
+                                <select name="transmission" id="transmission" class="form-control form-control-sm"
+                                    #transmission="ngModel" ngModel [ngModel]="ad!.transmission" required>
+                                    <option value="manual">manual</option>
+                                    <option value="automatic">automatic</option>
+                                    <option value="semiautomatic">semiautomatic</option>
+                                </select>
+
+                                <div *ngIf="transmission.touched && transmission.invalid" class="alert alert-danger">
+                                    <div *ngIf="transmission.errors?.['required']">
+                                        Transmission is required
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label for="category">Category</label>
+                                <select name="category" id="category" class="form-control form-control-sm" ngModel
+                                    #category="ngModel" [ngModel]="ad!.category" required>
+                                    <option value="van">van</option>
+                                    <option value="jeep">jeep</option>
+                                    <option value="sedan">sedan</option>
+                                    <option value="cabrio">cabrio</option>
+                                    <option value="conbi">combi</option>
+                                    <option value="limo">limo</option>
+                                    <option value="hatchback">hatchback</option>
+                                </select>
+
+
+                                <div *ngIf="category.touched && category.invalid" class="alert alert-danger">
+                                    <div *ngIf="category.errors?.['required']">
+                                        Category is required
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row my-2">
+                            <div class="col-md-3">
+                                <label for="mileage">Мileage in km</label>
+                                <input type="text" name="mileage" autocomplete="off"
+                                    class="form-control form-control-sm" id="mileage" ngModel required maxlength="7"
+                                    pattern="^\d+$" #mileage="ngModel" [ngModel]="ad!.mileage">
+
+                                <div *ngIf="mileage.touched && mileage.invalid" class="alert alert-danger">
+                                    <div>
+                                        <div *ngIf="mileage.errors?.['required']">
+                                            Mileage is required
+                                        </div>
+                                        <div *ngIf="mileage.errors?.['pattern']">
+                                            Allowed only numbers
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label for="color">Color</label>
+                                <select name="color" id="color" class="form-control form-control-sm" ngModel required
+                                    #color="ngModel" [ngModel]="ad!.color">
+                                    <option value="Banana">Banana</option>
+                                    <option value="Beata">Beata</option>
+                                    <option value="Beige">Beige</option>
+                                    <option value="Black">Black</option>
+                                    <option value="Bordeaux">Bordeaux</option>
+                                    <option value="Bronze">Bronze</option>
+                                    <option value="Brown">Brown</option>
+                                    <option value="Chameleon">Chameleon</option>
+                                    <option value="Cinderella">Cinderella</option>
+                                    <option value="Creamy">Creamy</option>
+                                    <option value="Dark blue">Dark blue</option>
+                                    <option value="Dark blue meth.">Dark blue meth.</option>
+                                    <option value="Dark gray">Dark gray</option>
+                                    <option value="Dark red">Dark red</option>
+                                    <option value="Golden">Golden</option>
+                                    <option value="Graphite">Graphite</option>
+                                    <option value="Gray">Gray</option>
+                                    <option value="Green">Green</option>
+                                    <option value="Guilty">Guilty</option>
+                                    <option value="Ivory">Ivory</option>
+                                    <option value="Light blue">Light blue</option>
+                                    <option value="Light Grey">Light Grey</option>
+                                    <option value="Metallic">Metallic</option>
+                                    <option value="Ocher">Ocher</option>
+                                    <option value="Orange">Orange</option>
+                                    <option value="Pearl">Pearl</option>
+                                    <option value="Pink">Pink</option>
+                                    <option value="Purple">Purple</option>
+                                    <option value="Red">Red</option>
+                                    <option value="Residual">Residual</option>
+                                    <option value="Sahara">Sahara</option>
+                                    <option value="Sandy">Sandy</option>
+                                    <option value="Silver">Silver</option>
+                                    <option value="Son">Son</option>
+                                    <option value="T.green">T.green</option>
+                                    <option value="Tiled">Tiled</option>
+                                    <option value="Tobacco">Tobacco</option>
+                                    <option value="Violets">Violets</option>
+                                    <option value="Vishnev">Vishnev</option>
+                                    <option value="White">White</option>
+                                    <option value="Yellow">Yellow</option>
+                                </select>
+
+                                <div *ngIf="color.touched && color.invalid" class="alert alert-danger">
+                                    <div *ngIf="color.errors?.['required']">
+                                        Color is required
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row my-2">
+                            <div class="col-md-3">
+                                <label for="price">Price</label>
+                                <input type="text" name="price" autocomplete="off" id="price"
+                                    class="form-control form-control-sm" maxlength="6" ngModel required #price="ngModel"
+                                    pattern="^\d+$" [ngModel]="ad!.price">
+
+                                <div *ngIf="price.touched && price.invalid" class="alert alert-danger">
+                                    <div>
+                                        <div *ngIf="price.errors?.['required']">
+                                            Price is required
+                                        </div>
+                                        <div *ngIf="price.errors?.['pattern']">
+                                            Allowed only numbers
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label for="currency">Currency</label>
+                                <select name="currency" id="currency" class="form-control form-control-sm" ngModel
+                                    required #currency="ngModel" [ngModel]="ad!.currency">
+                                    <option value="лв.">BGN</option>
+                                    <option value="EUR">EUR</option>
+                                    <option value="USD">USD</option>
+                                </select>
+
+                                <div *ngIf="currency.touched && currency.invalid" class="alert alert-danger">
+
+                                    <div *ngIf="currency.errors?.['required']">
+                                        Currency is required
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label for="moreInfo">AD INFORMATION: </label>
+                            <textarea type="text" name="moreInfo" id="moreInfo" class="form-control form-control-sm"
+                                rows="10" ngModel requred minlength="10" maxlength="500" #moreInfo="ngModel"
+                                [ngModel]="ad!.moreInfo"></textarea>
+
+                            <div *ngIf="moreInfo.touched && moreInfo.invalid" class="alert alert-danger">
+                                <div>
+                                    <div *ngIf="moreInfo.errors?.['required']">
+                                        Information is required
+                                    </div>
+                                    <div *ngIf="moreInfo.errors?.['minlength']">
+                                        Information should be atleast 10 characters
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <button class="btn btn-secondary" (click)="inUpdateMode = false">Cancel</button>
+                            <button class="btn btn-success">SAVE</button>
+                        </div>
+                    </div>
+                </form>
+            </ng-container>
+
+            <ng-container *ngIf="!inUpdateMode">
+                <div class="row py-2" style="max-width: 500px;">
+                    <div class="col">
+                        <h2>{{ad.brand}} {{ad.model}}</h2>
+                    </div>
+                    <div class="col" style="color: #930636;">
+                        <h4>{{ad.price}} {{ad.currency}}</h4>
+                    </div>
                 </div>
-            </div>
+
+                <div class="row pb-5">
+                    <table style="max-width: 500px;">
+                        <tbody>
+                            <tr>
+                                <td>Manifacture Date</td>
+                                <td><b>{{ad.manifactureDate | date:'MMMM y'}} г.</b></td>
+                            </tr>
+                            <tr>
+                                <td>Engine Type</td>
+                                <td><b>{{ad.engineType}}</b></td>
+                            </tr>
+                            <tr>
+                                <td>Transmission</td>
+                                <td><b>{{ad.transmission}}</b></td>
+                            </tr>
+                            <tr>
+                                <td>Category</td>
+                                <td><b>{{ad.category}}</b></td>
+                            </tr>
+                            <tr>
+                                <td>Mileage</td>
+                                <td><b>{{ad.mileage}} км.</b></td>
+                            </tr>
+                            <tr>
+                                <td>Color</td>
+                                <td><b>{{ad.color}}</b></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row pb-5">
+                    <h6>Ad information:</h6>
+                    <hr>
+                    <div>
+                        {{ad.moreInfo}}
+                    </div>
+                </div>
+            </ng-container>
+
             <div class="row pb-5">
                 <h6>Contacts:</h6>
                 <hr>
-                
                 <div>
-                  email: <b>{{ad.userId.email}}</b>
+                    email: <b>{{ad.userId.email}}</b>
                 </div>
                 <div>
-                  telephone: <b>{{ad.userId.telephone}}</b> 
+                    telephone: <b>{{ad.userId.telephone}}</b>
                 </div>
             </div>
+
         </div>
 
 
         <div *ngIf="ad.userId.email == userEmail" class="row">
             <div>
-                <button type="button" class="btn btn-warning">Edit</button>
+                <button type="button" class="btn btn-warning" (click)="inUpdateMode = true">Edit</button>
                 <button type="button" class="btn btn-danger" (click)="deleteAd(ad._id)">Delete</button>
 
             </div>
-            
+
         </div>
 
     </div>
+</div>
 
-    <div *ngIf="!ad">
-        Loading ...
-    </div>
+<div *ngIf="!ad">
+    Loading ...
 </div>

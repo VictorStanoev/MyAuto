@@ -3,7 +3,7 @@
     <main>
         <div class="" *ngIf="myAds">
             <div *ngIf="myAds.length==0">
-                <h3>Sorry! No cars were found with this search criteria!</h3>
+                <h3>You have no ads created! You can create some.</h3>
             </div>
             <div *ngFor="let ad of myAds" class="theme-container">
                 <div class="" [routerLink]="ad._id">
