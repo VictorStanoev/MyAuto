@@ -1,27 +1,27 @@
-# MyApp
+# 🕶️ **Project Introduction**
+ **MyAuto** is my defense project for Angular course at SoftUni (March 2022). The project is a car sales platform.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.2.
+# ✏️ **Overview**
+With **MyAuto** users can create and publish ads with the information of their car/s (detailed description and technical parameters, photos, location, price, ets.). The users can edit their ads at any time, change conditions, photos, price. Non registered users can search cars by diferent criteria : brand, model, price, ets. and to view ads.
 
-## Development server
+# 🚧 **Application Structure**
+The application have:
+* public part (accessible without authentication)
+* private part (available for registered users)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+### Public Part
 
-## Code scaffolding
+The public part of project is visible without authentication. This public part is the application start page, the user login and user registration forms, as well as the public data of the user ads. The non registered user can use search form to view all available ads
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Private Part (User Area)
 
-## Build
+Registered users have personal area in the app accessible after successful login. This area holds the user's profiles management functionality. The user can edit his login credentials. The user also can access section with all his ads and to make changes on them. Only registered users can create new ads.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+# 🔨 **Built With** 
+* Angular 13
+* TypeScript
+* Bootstrap
+#### Server side
+* Node.js 
+* Mongoose
+* MongoDB
