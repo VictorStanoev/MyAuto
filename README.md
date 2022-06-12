@@ -18,10 +18,13 @@ The public part of project is visible without authentication. This public part i
 Registered users have personal area in the app accessible after successful login. This area holds the user's profiles management functionality. The user can edit his login credentials. The user also can access section with all his ads and to make changes on them. Only registered users can create new ads.
 
 # 🔨 **Built With** 
+#### Front-end
 * Angular 13
 * TypeScript
 * Bootstrap
-#### Server side
+#### MyAuto Server 👇[download](https://github.com/VictorStanoev/MyAuto-Server)
 * Node.js 
 * Mongoose
-* MongoDB
+
+#### Database
+* MongoDB (required) 👇[download](https://www.mongodb.com/atlas/database)
